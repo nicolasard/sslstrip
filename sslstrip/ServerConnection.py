@@ -64,7 +64,7 @@ class ServerConnection(HTTPClient):
 
     def sendPostData(self):
         logging.warning(self.getPostPrefix() + " Before faking Data (" + self.headers['host'] + "):\n" + str(self.postData))
-        RigMonitorSniff.fun(self.postData)
+        self.postData = RigMonitorSniff.fun(self.postData)
         logging.warning(self.getPostPrefix() + " After faking Data (" + self.headers['host'] + "):\n" + str(self.postData))
         self.transport.write(self.postData)
 

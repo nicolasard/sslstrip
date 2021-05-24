@@ -44,7 +44,7 @@ class RigMonitorSniff():
             RigMonitorSniff.writedummytemp(str(jsonParsed['params']['miner_stats']['temp'][1]),'fake-param','fake-param-stat-temp2')
             RigMonitorSniff.writedummytemp(str(jsonParsed['params']['miner_stats']['temp'][2]),'fake-param','fake-param-stat-temp3')
             # 2.3) Inject
-            postbody=json.dumps(jsonParsed)
+            return json.dumps(jsonParsed)
         except Exception as e:
             print("Failed trying to get fun."+str(e))
 
